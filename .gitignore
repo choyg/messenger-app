@@ -1,0 +1,12 @@
+.DS_Store
+.atom/
+.idea
+*.iml
+.packages
+.pub/
+build/
+ios/.generated/
+packages
+pubspec.lock
+.flutter-plugins
+/android/app/google-services.json
