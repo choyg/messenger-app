@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../api/messenger_api.dart';
 import '../entities/contact.dart';
 import 'components/messenger_navbar.dart';
+import 'threads.dart';
 
 class Contacts extends StatefulWidget {
   Contacts({Key key, this.title, this.index = 0}) : super(key: key);
@@ -37,8 +38,7 @@ class _ContactsState extends State<Contacts> {
   }
 
   Widget getContactsBody() {
-    if (contacts.length == 0)
-      return new Center(child: new CircularProgressIndicator());
+    if (contacts.length == 0) return new Center(child: new CircularProgressIndicator());
     return new ListView.builder(
       //padding: new EdgeInsets.only(top: 16.0),
       itemCount: contacts.length,
@@ -63,7 +63,9 @@ class _ContactsState extends State<Contacts> {
 
   void _contactsTap(int index) {
     var contact = contacts[index];
-    print(contact);
+    Navigator
+        .of(context)
+        .push(new MaterialPageRoute(builder: (context) => new Threads(contact, contact.userId)));
   }
 
   _setFriends() async {

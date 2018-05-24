@@ -13,7 +13,6 @@ class Messages extends StatefulWidget {
 }
 
 class _MessagesState extends State<Messages> {
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -49,6 +48,5 @@ class _MessagesState extends State<Messages> {
     );
   }
 
-  void _messageTap() {
-  }
+  void _messageTap() {}
 }
