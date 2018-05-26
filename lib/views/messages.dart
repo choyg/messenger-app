@@ -5,7 +5,7 @@ import '../entities/thread.dart';
 import '../entities/contact.dart';
 import '../api/messenger_api.dart';
 import 'components/messenger_navbar.dart';
-import 'thread.dart';
+import 'conversation.dart';
 
 class Messages extends StatefulWidget {
   Messages({Key key, this.title, this.index = 0}) : super(key: key);
@@ -66,8 +66,8 @@ class _MessagesState extends State<Messages> {
 
   void _messageTap(index) {
     var thread = threads[index];
-    Navigator.of(context).push(
-        new MaterialPageRoute(builder: (context) => new Threads(thread.name, thread.threadID)));
+    Navigator.of(context).push(new MaterialPageRoute(
+        builder: (context) => new Conversation(thread.name, thread.threadID)));
   }
 
   _setRecentThreads() async {

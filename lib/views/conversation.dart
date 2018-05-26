@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'components/chat_message.dart';
+import '../entities/contact.dart';
 
-class Threads extends StatefulWidget {
-  Threads(this.name, this.threadId, {Key key}) : super(key: key);
+class Conversation extends StatefulWidget {
+  Conversation(this.name, this.threadId, {Key key}) : super(key: key);
 
   final String name;
   final String threadId;
@@ -12,7 +13,7 @@ class Threads extends StatefulWidget {
   _ThreadsState createState() => new _ThreadsState();
 }
 
-class _ThreadsState extends State<Threads> {
+class _ThreadsState extends State<Conversation> {
   final List<ChatMessage> _messages = <ChatMessage>[];
   final TextEditingController _textController = new TextEditingController();
 
