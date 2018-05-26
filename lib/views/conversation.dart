@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'components/chat_message.dart';
 import '../entities/contact.dart';
+import '../api/messenger_api.dart';
 
 class Conversation extends StatefulWidget {
   Conversation(this.name, this.threadId, {Key key}) : super(key: key);
@@ -20,6 +21,7 @@ class _ThreadsState extends State<Conversation> {
   @override
   void initState() {
     super.initState();
+    _setMsgs();
   }
 
   @override
@@ -75,18 +77,17 @@ class _ThreadsState extends State<Conversation> {
   void _handleSubmitted(String text) {
     _textController.clear();
     ChatMessage message = new ChatMessage(
-      contact: new Contact("100000255123333", "Username",
-          "https://scontent-dft4-3.xx.fbcdn.net/v/t1.0-1/c0.7.32.32/p32x32/17156164_1037829236361793_1032450747588821100_n.jpg?oh=615f64fd28cf07003efef72663ea9b8d&oe=5AE6B632"),
+      contact: new Contact("100000255123333", "Username", ""),
       text: text,
-      isUser: true,
     );
     setState(() {
       _messages.insert(0, message);
     });
   }
 
-  _setFriends() async {
-    //contacts = await getFriends();
+  _setMsgs() async {
+    final msges = await getConversationHistory(widget.threadId);
+    _messages.insertAll(0, msges);
     mounted ? setState(() => {}) : null;
   }
 }

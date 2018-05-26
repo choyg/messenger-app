@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import '../../entities/contact.dart';
 
 class ChatMessage extends StatelessWidget {
-  ChatMessage({this.text, this.contact, this.isUser});
+  ChatMessage({this.text, this.contact});
 
   final String text;
   final Contact contact;
-  final bool isUser;
 
   @override
   Widget build(BuildContext context) {
