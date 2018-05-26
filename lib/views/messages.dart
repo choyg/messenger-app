@@ -90,7 +90,6 @@ class _MessagesState extends State<Messages> {
       Colors.purple,
       Colors.red,
       Colors.teal,
-      Colors.white
     ];
     final _random = new Random();
     return colors[_random.nextInt(colors.length)];
