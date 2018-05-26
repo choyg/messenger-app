@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../entities/contact.dart';
 import 'components/chat_message.dart';
 
 class Threads extends StatefulWidget {
-  Threads(this.contact, this.threadId, {Key key}) : super(key: key);
+  Threads(this.name, this.threadId, {Key key}) : super(key: key);
 
-  final Contact contact;
+  final String name;
   final String threadId;
 
   @override
@@ -26,23 +25,20 @@ class _ThreadsState extends State<Threads> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text(widget.contact.name),
+        title: new Text(widget.name),
       ),
       body: new Column(
         children: <Widget>[
           new Flexible(
               child: new ListView.builder(
-                padding: new EdgeInsets.all(8.0),
-                reverse: true,
-                itemBuilder: (context, index) => _messages[index],
-                itemCount: _messages.length,
-              )),
+            padding: new EdgeInsets.all(8.0),
+            reverse: true,
+            itemBuilder: (context, index) => _messages[index],
+            itemCount: _messages.length,
+          )),
           new Divider(height: 2.0),
           new Container(
-              decoration: new BoxDecoration(
-                  color: Theme
-                      .of(context)
-                      .cardColor),
+              decoration: new BoxDecoration(color: Theme.of(context).cardColor),
               child: _buildTextComposer()),
         ],
       ),
@@ -58,14 +54,16 @@ class _ThreadsState extends State<Threads> {
             child: new TextField(
               controller: _textController,
               onSubmitted: (text) => _handleSubmitted(text),
-              decoration: new InputDecoration.collapsed(
-                  hintText: "Send a message"),
+              decoration: new InputDecoration.collapsed(hintText: "Send a message"),
             ),
           ),
           new Container(
             margin: new EdgeInsets.symmetric(horizontal: 4.0),
             child: new IconButton(
-                icon: new Icon(Icons.send, color: Colors.blueAccent,),
+                icon: new Icon(
+                  Icons.send,
+                  color: Colors.blueAccent,
+                ),
                 onPressed: () => _handleSubmitted(_textController.text)),
           ),
         ],

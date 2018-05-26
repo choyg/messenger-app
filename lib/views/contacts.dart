@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../api/messenger_api.dart';
 import '../entities/contact.dart';
 import 'components/messenger_navbar.dart';
-import 'threads.dart';
+import 'thread.dart';
 
 class Contacts extends StatefulWidget {
   Contacts({Key key, this.title, this.index = 0}) : super(key: key);
@@ -63,9 +63,8 @@ class _ContactsState extends State<Contacts> {
 
   void _contactsTap(int index) {
     var contact = contacts[index];
-    Navigator
-        .of(context)
-        .push(new MaterialPageRoute(builder: (context) => new Threads(contact, contact.userId)));
+    Navigator.of(context).push(
+        new MaterialPageRoute(builder: (context) => new Threads(contact.name, contact.userId)));
   }
 
   _setFriends() async {

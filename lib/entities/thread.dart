@@ -1,4 +1,10 @@
 class Thread {
   String threadID;
-  List<String> participantIDs;
+  String name;
+  String message;
+
+  Thread.fromJson(Map<String, dynamic> json)
+      : threadID = json['threadID'],
+        name = json['name'],
+        message = json['message'];
 }
